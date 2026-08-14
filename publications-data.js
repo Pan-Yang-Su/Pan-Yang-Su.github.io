@@ -32,7 +32,7 @@ const PUBLICATIONS = [
     authors: "Mendoza, M. G., Su, P.-Y., Ferguson, B. L., & Sastry, S.",
     venue: "arXiv preprint",
     year: 2026,
-    topics: ["Game theory", "Multi-agent systems"],
+    topics: ["Game theory", "Multi-robot task allocation"],
     link: "https://doi.org/10.48550/arXiv.2604.11954"
   },
   {
@@ -72,7 +72,7 @@ const PUBLICATIONS = [
     authors: "Maheshwari, C., Mendoza, M. G., Tuck, V., Su, P.-Y., Qin, V. L., Seshia, S. A., Balakrishnan, H., & Sastry, S.",
     venue: "arXiv preprint",
     year: 2024,
-    topics: ["Mechanism design", "Advanced air mobility", "Privacy"],
+    topics: ["Mechanism design", "Advanced air mobility"],
     link: "https://doi.org/10.48550/arXiv.2411.03582"
   },
   {
