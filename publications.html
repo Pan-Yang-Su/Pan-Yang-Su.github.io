@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Jane Researcher</title>
+<meta name="description" content="Publications by Jane Researcher, organized by year or by topic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Jane Researcher<span class="dot">.</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">About</a>
+      <a href="publications.html" aria-current="page">Publications</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero" style="padding-bottom: 8px;">
+      <span class="hero-label">Card catalog</span>
+      <h1 style="max-width: 20ch;">Publications</h1>
+      <p class="lede">Every paper below is filed in two drawers at once — pick
+      whichever order helps you find what you're looking for.</p>
+    </section>
+
+    <section aria-labelledby="pubs-heading">
+      <h2 id="pubs-heading" class="visually-hidden">Publication list</h2>
+
+      <div class="drawer-tabs" role="tablist" aria-label="Sort publications">
+        <button class="drawer-tab" id="tab-year" role="tab" aria-selected="true" aria-controls="panel-year">By year</button>
+        <button class="drawer-tab" id="tab-topic" role="tab" aria-selected="false" aria-controls="panel-topic">By topic</button>
+      </div>
+
+      <div class="drawer-panel" id="panel-year" role="tabpanel" aria-labelledby="tab-year">
+        <!-- populated by script -->
+      </div>
+
+      <div class="drawer-panel" id="panel-topic" role="tabpanel" aria-labelledby="tab-topic" hidden>
+        <!-- populated by script -->
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    © 2026 Jane Researcher · Built with plain HTML, hosted on GitHub Pages
+  </div>
+</footer>
+
+<script src="publications-data.js"></script>
+<script>
+(function () {
+  const yearPanel = document.getElementById('panel-year');
+  const topicPanel = document.getElementById('panel-topic');
+  const tabYear = document.getElementById('tab-year');
+  const tabTopic = document.getElementById('tab-topic');
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  function paperCard(pub) {
+    const linkHtml = pub.link
+      ? `<a class="tag" href="${escapeHtml(pub.link)}" target="_blank" rel="noopener">Read paper →</a>`
+      : '';
+    const topicTags = pub.topics.map(t => `<span class="tag" style="pointer-events:none;">${escapeHtml(t)}</span>`).join('');
+    return `
+      <article class="card">
+        <div class="card-inner">
+          <h3>${escapeHtml(pub.title)}</h3>
+          <p class="meta">${escapeHtml(pub.authors)} — <em>${escapeHtml(pub.venue)}</em>, ${pub.year}</p>
+          <div class="tag-row">${topicTags}${linkHtml}</div>
+        </div>
+      </article>`;
+  }
+
+  function renderByYear() {
+    const years = [...new Set(PUBLICATIONS.map(p => p.year))].sort((a, b) => b - a);
+    yearPanel.innerHTML = years.map(year => {
+      const items = PUBLICATIONS
+        .filter(p => p.year === year)
+        .map(paperCard)
+        .join('');
+      return `<h3 class="group-heading">${year}</h3>${items}`;
+    }).join('');
+  }
+
+  function renderByTopic() {
+    const topics = [...new Set(PUBLICATIONS.flatMap(p => p.topics))].sort((a, b) => a.localeCompare(b));
+    topicPanel.innerHTML = topics.map(topic => {
+      const items = PUBLICATIONS
+        .filter(p => p.topics.includes(topic))
+        .sort((a, b) => b.year - a.year)
+        .map(paperCard)
+        .join('');
+      return `<h3 class="group-heading">${escapeHtml(topic)}</h3>${items}`;
+    }).join('');
+  }
+
+  function showTab(which) {
+    const showYear = which === 'year';
+    tabYear.setAttribute('aria-selected', String(showYear));
+    tabTopic.setAttribute('aria-selected', String(!showYear));
+    yearPanel.hidden = !showYear;
+    topicPanel.hidden = showYear;
+  }
+
+  tabYear.addEventListener('click', () => showTab('year'));
+  tabTopic.addEventListener('click', () => showTab('topic'));
+
+  renderByYear();
+  renderByTopic();
+})();
+</script>
+
+</body>
+</html>
