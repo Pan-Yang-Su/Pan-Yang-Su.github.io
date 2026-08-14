@@ -32,7 +32,7 @@ const PUBLICATIONS = [
     authors: "Mendoza, M. G., Su, P.-Y., Ferguson, B. L., & Sastry, S.",
     venue: "arXiv preprint",
     year: 2026,
-    topics: ["Game theory", "Multi-robot task allocation"],
+    topics: ["Game theory", "Multi-agent systems"],
     link: "https://doi.org/10.48550/arXiv.2604.11954"
   },
   {
