@@ -80,6 +80,10 @@ const PUBLICATIONS = [
     arxivLink: "https://doi.org/10.48550/arXiv.2411.03582"
   },
   {
+    title: "Priority-Aware Resource Allocation for 5G mmWave Multicast Broadcast Services",
+    authors: "Su, P.-Y., Lin, K.-H., Li, Y.-Y., & Wei, H.-Y.",
+    venue: "IEEE Transactions on Broadcasting, 69(1), 246–263",
+    year: 2023,
     topics: ["Wireless networks", "Mechanism design"],
     link: "https://doi.org/10.1109/TBC.2022.3221696",
     arxivLink: ""
