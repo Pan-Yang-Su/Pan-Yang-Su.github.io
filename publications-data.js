@@ -20,7 +20,7 @@ const PUBLICATIONS = [
     title: "Average Unfairness in Routing Games",
     authors: "Su, P.-Y., Alanqary, A., Ferguson, B. L., Wu, M., Bayen, A. M., & Sastry, S.",
     venue: "International Conference on Autonomous Agents and Multiagent Systems (AAMAS)",
-    year: 2025,
+    year: 2026,
     topics: ["Game theory", "Traffic & transportation"],
     link: "",
     arxivLink: "https://doi.org/10.48550/arXiv.2601.16187"
