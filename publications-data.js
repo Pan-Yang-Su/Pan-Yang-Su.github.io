@@ -48,7 +48,7 @@ const PUBLICATIONS = [
     authors: "Su, P.-Y., Mehr, N., & Sastry, S.",
     venue: "arXiv preprint",
     year: 2026,
-    topics: ["Game theory", "Mechanism design"],
+    topics: ["Game theory"],
     link: "",
     arxivLink: "https://doi.org/10.48550/arXiv.2607.03625"
   },
@@ -71,7 +71,7 @@ const PUBLICATIONS = [
     arxivLink: "https://doi.org/10.48550/arXiv.2403.18166"
   },
   {
-    title: "Privacy Preserving Mechanisms for Coordinating Airspace Usage in Advanced Air Mobility",
+    title: "Privacy-Preserving Mechanisms for Coordinating Airspace Usage in Advanced Air Mobility",
     authors: "Maheshwari, C., Mendoza, M. G., Tuck, V., Su, P.-Y., Qin, V. L., Seshia, S. A., Balakrishnan, H., & Sastry, S.",
     venue: "ACM Journal on Autonomous Transportation Systems",
     year: 2025,
