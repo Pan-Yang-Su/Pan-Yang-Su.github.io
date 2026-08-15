@@ -53,7 +53,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    © 2026 Pan-Yang Su · Built with plain HTML, hosted on GitHub Pages
+    © 2026 Pan-Yang Su · Built with plain HTML, maintained by Claude, hosted on GitHub Pages
   </div>
 </footer>
 
@@ -72,8 +72,11 @@
   }
 
   function paperCard(pub) {
-    const linkHtml = pub.link
-      ? `<a class="tag" href="${escapeHtml(pub.link)}" target="_blank" rel="noopener">Read paper →</a>`
+    const officialLink = pub.link
+      ? `<a class="tag" href="${escapeHtml(pub.link)}" target="_blank" rel="noopener">Paper →</a>`
+      : '';
+    const arxivLink = pub.arxivLink
+      ? `<a class="tag" href="${escapeHtml(pub.arxivLink)}" target="_blank" rel="noopener">arXiv →</a>`
       : '';
     const topicTags = pub.topics.map(t => `<span class="tag" style="pointer-events:none;">${escapeHtml(t)}</span>`).join('');
     return `
@@ -81,7 +84,7 @@
         <div class="card-inner">
           <h3>${escapeHtml(pub.title)}</h3>
           <p class="meta">${escapeHtml(pub.authors)} — <em>${escapeHtml(pub.venue)}</em>, ${pub.year}</p>
-          <div class="tag-row">${topicTags}${linkHtml}</div>
+          <div class="tag-row">${topicTags}${officialLink}${arxivLink}</div>
         </div>
       </article>`;
   }
@@ -99,14 +102,31 @@
 
   function renderByTopic() {
     const topics = [...new Set(PUBLICATIONS.flatMap(p => p.topics))].sort((a, b) => a.localeCompare(b));
-    topicPanel.innerHTML = topics.map(topic => {
-      const items = PUBLICATIONS
-        .filter(p => p.topics.includes(topic))
-        .sort((a, b) => b.year - a.year)
-        .map(paperCard)
-        .join('');
-      return `<h3 class="group-heading">${escapeHtml(topic)}</h3>${items}`;
+    topicPanel.innerHTML = topics.map((topic, i) => {
+      const items = PUBLICATIONS.filter(p => p.topics.includes(topic));
+      const sorted = [...items].sort((a, b) => b.year - a.year);
+      const panelId = `topic-panel-${i}`;
+      const triggerId = `topic-trigger-${i}`;
+      return `
+        <div class="accordion-item">
+          <button class="accordion-trigger" id="${triggerId}" aria-expanded="false" aria-controls="${panelId}">
+            <span>${escapeHtml(topic)}<span class="count">${items.length} paper${items.length === 1 ? '' : 's'}</span></span>
+            <span class="chevron" aria-hidden="true">›</span>
+          </button>
+          <div class="accordion-panel" id="${panelId}" role="region" aria-labelledby="${triggerId}" hidden>
+            ${sorted.map(paperCard).join('')}
+          </div>
+        </div>`;
     }).join('');
+
+    topicPanel.querySelectorAll('.accordion-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+        panel.hidden = expanded;
+      });
+    });
   }
 
   function showTab(which) {
