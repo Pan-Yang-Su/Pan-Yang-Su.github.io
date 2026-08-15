@@ -110,8 +110,11 @@
       return `
         <div class="accordion-item">
           <button class="accordion-trigger" id="${triggerId}" aria-expanded="false" aria-controls="${panelId}">
-            <span>${escapeHtml(topic)}<span class="count">${items.length} paper${items.length === 1 ? '' : 's'}</span></span>
-            <span class="chevron" aria-hidden="true">›</span>
+            <span class="accordion-title">${escapeHtml(topic)}</span>
+            <span class="accordion-meta">
+              <span class="count">${items.length} paper${items.length === 1 ? '' : 's'}</span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </span>
           </button>
           <div class="accordion-panel" id="${panelId}" role="region" aria-labelledby="${triggerId}" hidden>
             ${sorted.map(paperCard).join('')}
