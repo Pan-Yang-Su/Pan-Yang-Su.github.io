@@ -133,9 +133,36 @@ img { max-width: 100%; display: block; }
 }
 
 .hero .lede {
-  max-width: 60ch;
+  max-width: 68ch;
   color: var(--ink);
   font-size: 1rem;
+}
+
+.hero .lede + .lede { margin-top: 14px; }
+
+.themes {
+  max-width: 68ch;
+  margin: 14px 0 0;
+  padding-left: 1.4em;
+}
+.themes li {
+  margin-bottom: 16px;
+  padding-left: 4px;
+}
+.themes li::marker {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+.themes strong {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+.themes .related {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
 }
 
 .hero-links {
