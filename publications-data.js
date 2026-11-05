@@ -17,6 +17,15 @@
 
 const PUBLICATIONS = [
   {
+    title: "Dynamic Auction Mechanisms in a Closed-Credit Economy: Sequential Slot Reallocation in Air Traffic Management",
+    authors: "Kim, J., Su, P.-Y., Mendoza, M. G., Tuck, V., Maheshwari, C., & Sastry, S.",
+    venue: "arXiv preprint",
+    year: 2026,
+    topics: ["Mechanism design", "Traffic & transportation"],
+    link: "",
+    arxivLink: "https://arxiv.org/abs/2610.22683"
+  },
+  {
     title: "Average Unfairness in Routing Games",
     authors: "Su, P.-Y., Alanqary, A., Ferguson, B. L., Wu, M., Bayen, A. M., & Sastry, S.",
     venue: "International Conference on Autonomous Agents and Multiagent Systems (AAMAS)",
