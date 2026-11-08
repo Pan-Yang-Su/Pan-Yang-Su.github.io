@@ -211,6 +211,36 @@ img { max-width: 100%; display: block; }
 }
 .entry-sub { color: var(--ink-soft); font-size: 0.92rem; margin-top: 2px; }
 
+.coursework { margin-top: 12px; }
+.coursework-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.coursework dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 14.5em 1fr;
+  gap: 10px 14px;
+  font-size: 0.92rem;
+}
+.coursework dt { color: var(--ink-soft); }
+.course { display: block; }
+.course + .course { margin-top: 2px; }
+.course .code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  color: var(--ink-soft);
+}
+.coursework dd { margin: 0; color: var(--ink); }
+@media (max-width: 600px) {
+  .coursework dl { grid-template-columns: 1fr; gap: 0; }
+  .coursework dd { margin-bottom: 8px; }
+}
+
 .hero-links {
   margin-top: 26px;
   display: flex;
