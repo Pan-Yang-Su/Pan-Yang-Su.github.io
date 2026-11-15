@@ -78,7 +78,8 @@ img { max-width: 100%; display: block; }
 
 .site-nav {
   display: flex;
-  gap: 22px;
+  flex-wrap: wrap;
+  gap: 6px 22px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
@@ -130,6 +131,30 @@ img { max-width: 100%; display: block; }
   color: var(--ink-soft);
   margin: 0 0 22px;
   max-width: 55ch;
+}
+
+/* Hero with portrait: text on the left, photo on the right */
+.hero-with-photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 6px;
+  border: 1px solid var(--card-edge);
+  box-shadow: 0 1px 3px var(--shadow);
+  background: #F1F4F8;
+}
+@media (max-width: 600px) {
+  .hero-with-photo { flex-direction: column-reverse; align-items: flex-start; gap: 20px; }
+  .hero-photo { width: 120px; height: 120px; }
 }
 
 .hero .lede {
