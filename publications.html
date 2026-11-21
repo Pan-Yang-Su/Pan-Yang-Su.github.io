@@ -30,6 +30,7 @@
       <h1 style="max-width: 20ch;">Publications</h1>
       <p class="lede">Every paper below is filed in two drawers at once — pick
       whichever order helps you find what you're looking for.</p>
+      <p class="pub-note"><sup>*</sup> Equal contribution (co-first authors).</p>
     </section>
 
     <section aria-labelledby="pubs-heading">
@@ -78,6 +79,17 @@
         .map(name => ({ name, short: name, focus: '' }));
   const shortName = Object.fromEntries(TOPIC_LIST.map(t => [t.name, t.short || t.name]));
 
+  // Author list: bold my name, and mark co-first authors with *.
+  function formatAuthors(pub) {
+    let html = escapeHtml(pub.authors);
+    (pub.equalContribution || []).forEach(name => {
+      const n = escapeHtml(name);
+      html = html.replace(n, n + '<sup class="equal">*</sup>');
+    });
+    const me = escapeHtml(MY_NAME);
+    return html.replace(me, '<strong class="me">' + me + '</strong>');
+  }
+
   function paperCard(pub) {
     const officialLink = pub.link
       ? `<a class="tag" href="${escapeHtml(pub.link)}" target="_blank" rel="noopener">Paper →</a>`
@@ -90,7 +102,7 @@
       <article class="card">
         <div class="card-inner">
           <h3>${escapeHtml(pub.title)}</h3>
-          <p class="meta">${escapeHtml(pub.authors)} — <em>${escapeHtml(pub.venue)}</em>, ${pub.year}</p>
+          <p class="meta">${formatAuthors(pub)} — <em>${escapeHtml(pub.venue)}</em>, ${pub.year}</p>
           <div class="tag-row">${topicTags}${officialLink}${arxivLink}</div>
         </div>
       </article>`;
