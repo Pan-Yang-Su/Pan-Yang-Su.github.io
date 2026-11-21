@@ -355,6 +355,10 @@ section { padding: 10px 0 46px; }
   margin: 0 0 8px;
 }
 
+.card .meta strong.me { color: var(--ink); font-weight: 600; }
+.card .meta sup.equal { font-size: 0.8em; margin-left: 1px; }
+.pub-note { margin: 10px 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .tag {
   font-family: var(--font-mono);
