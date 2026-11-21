@@ -3,6 +3,8 @@
    Edit this file to add, remove, or update papers. The Publications
    page builds both views (By Year and By Topic) from it.
 
+   MY_NAME – how your name appears in author lists; it is shown in bold.
+
    TOPICS  – the categories shown in the By Topic view, in display order.
      name  – full category name (papers refer to this exact string)
      short – shorter label shown on each paper's tag
@@ -13,7 +15,11 @@
      topics    – list of category names from TOPICS (a paper can be in several)
      link      – URL of the published version ("" if not published yet)
      arxivLink – URL of the arXiv version ("" if none)
+     equalContribution – (optional) authors marked * as co-first authors,
+                 written exactly as in the authors string
    ========================================================= */
+
+const MY_NAME = "Su, P.-Y.";
 
 const TOPICS = [
   {
@@ -58,7 +64,7 @@ const PUBLICATIONS = [
     authors: "Su, P.-Y., Mehr, N., & Sastry, S.",
     venue: "arXiv preprint",
     year: 2026,
-    topics: ["Game Theory & Equilibrium Analysis", "Transportation & Mobility"],
+    topics: ["Game Theory & Equilibrium Analysis", "Mechanism Design & Incentives", "Transportation & Mobility"],
     link: "",
     arxivLink: "https://arxiv.org/abs/2607.03625"
   },
@@ -69,7 +75,8 @@ const PUBLICATIONS = [
     year: 2026,
     topics: ["Game Theory & Equilibrium Analysis", "Transportation & Mobility"],
     link: "https://dl.acm.org/doi/10.65109/HAKF7947",
-    arxivLink: "https://arxiv.org/abs/2601.16187"
+    arxivLink: "https://arxiv.org/abs/2601.16187",
+    equalContribution: ["Su, P.-Y.", "Alanqary, A."]
   },
   {
     title: "Moral Hazard in LTI Dynamics: A Hypothesis Testing Approach",
@@ -114,7 +121,8 @@ const PUBLICATIONS = [
     year: 2024,
     topics: ["Mechanism Design & Incentives", "Transportation & Mobility"],
     link: "https://doi.org/10.1109/CDC56724.2024.10886225",
-    arxivLink: "https://arxiv.org/abs/2403.18166"
+    arxivLink: "https://arxiv.org/abs/2403.18166",
+    equalContribution: ["Su, P.-Y.", "Maheshwari, C."]
   },
   {
     title: "Priority-Aware Resource Allocation for 5G mmWave Multicast Broadcast Services",
@@ -150,7 +158,8 @@ const PUBLICATIONS = [
     year: 2022,
     topics: ["Mechanism Design & Incentives", "Wireless Networks & Resource Allocation"],
     link: "https://doi.org/10.1109/VTC2022-Fall57202.2022.10012978",
-    arxivLink: ""
+    arxivLink: "",
+    equalContribution: ["Su, P.-Y.", "Tsai, P.-H.", "Lin, Y.-K."]
   },
   {
     title: "Resource Allocation Mechanism for Cooperative Multicast in Integrated Satellite-Terrestrial Network",
@@ -159,7 +168,8 @@ const PUBLICATIONS = [
     year: 2022,
     topics: ["Mechanism Design & Incentives", "Wireless Networks & Resource Allocation"],
     link: "https://doi.org/10.1109/VTC2022-Fall57202.2022.10012837",
-    arxivLink: ""
+    arxivLink: "",
+    equalContribution: ["Wu, J.-S.", "Su, P.-Y."]
   },
   {
     title: "Strategy-Proof Beam-Aware Multicast Resource Allocation Mechanism",
