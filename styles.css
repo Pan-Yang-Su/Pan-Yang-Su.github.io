@@ -493,6 +493,19 @@ section { padding: 10px 0 46px; }
   background: #FBFCFD;
 }
 .accordion-panel[hidden] { display: none; }
+.topic-focus {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.focus-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-right: 6px;
+}
 .accordion-panel .card {
   box-shadow: none;
   margin-top: 14px;
